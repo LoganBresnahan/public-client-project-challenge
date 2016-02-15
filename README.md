@@ -4,6 +4,8 @@ A social board game network. Vote and comment on board games you like (or don't)
 
 Here is a link placeholder for future Team JTron!
 
+[Trello Board](https://trello.com/b/5OQlZJgZ/penelope)
+
 ## Team Members
 
 - Steven Jones, sjones88
