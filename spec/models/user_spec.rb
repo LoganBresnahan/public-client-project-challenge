@@ -16,4 +16,8 @@ RSpec.describe User, :type => :model do
     expect(david.encrypted_password).to_not be_nil
   end
 
+  it "does not suck" do
+    expect(david.does_not_suck?).to be true
+  end
+
 end
