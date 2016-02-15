@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use devise
 gem 'devise'
 
+# Use simplecov to analyze test coverage
+gem 'simplecov', require: false, group: :test
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
