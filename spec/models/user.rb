@@ -1,1 +1,19 @@
-user.rb
+require 'rails_helper'
+
+RSpec.describe User, :type => :model do
+
+  let!(:david) { User.create!(name: "David", email: "dma315@gmail.com", password: "password") }
+
+  it "has a name" do
+    expect(david.name).to eq "David"
+  end
+
+  it "has an email" do
+    expect(david.email).to eq "dma315@gmail.com"
+  end
+
+  it "has a password that is not null" do
+    expect(david.encrypted_password).to_not be_nil
+  end
+
+end
