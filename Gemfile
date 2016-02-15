@@ -26,9 +26,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use devise
-gem 'devise'
-
 # Use simplecov to analyze test coverage
 gem 'simplecov', require: false, group: :test
 
