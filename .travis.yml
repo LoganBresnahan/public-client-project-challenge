@@ -3,9 +3,8 @@ rvm:
   - 2.0.0
 env:
   - DB=postgresql
-  - TEST_SUITE=units
-  - TEST_SUITE=integration
-script: "bundle exec rake test:$TEST_SUITE"
+script:
+  - bundle exec rake spec
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate
