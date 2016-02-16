@@ -4,7 +4,11 @@
   <% @games.each do |game| %>
     <tr>
       <td><%= link_to game.name, game_path(game) %></td>
-      <td><%= render partial: "stashes/new", locals: {game: game} %></td>
+      <% if has_game?(game) %>
+
+      <% else %>
+        <td><%= render partial: "stashes/new", locals: {game: game} %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

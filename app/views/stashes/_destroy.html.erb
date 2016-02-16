@@ -1,0 +1,4 @@
+<%= form_for :thisdoesntmatter, method: :delete, url: user_stash_path(current_user) do |f|%>
+  <input type="hidden" name="game_id" value="<%= game.id %>">
+  <%= f.button "Delete", class: "btn btn-primary" %>
+<% end %>
