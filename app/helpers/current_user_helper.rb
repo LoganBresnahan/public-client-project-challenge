@@ -8,4 +8,8 @@ module CurrentUserHelper
     current_user.games.include?(game) ? true : false
   end
 
+  def user_stash(game)
+    Stash.where(user: current_user, game: game).first
+  end
+
 end
