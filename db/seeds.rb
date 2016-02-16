@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+ids = (1..3).to_a
+
+categories = []
+
+bgg = BggApi.new
+
+ids.each do |id|
+  game = bgg.thing({id: id.to_s})["item"].first
+  game_hash = {
+
+    name:
+  }
+end

@@ -3,8 +3,8 @@ bgg = BggApi.new
 game = bgg.thing({:id => "1"})["item"].first
 
 id = game["id"].to_i
-thumbnail_url = game["thumbnail"][0]
 name = game["name"].first["value"]
+thumbnail_url = game["thumbnail"][0]
 description = game["description"].first # Note, this is kinda messy, we may need to remove some weird characters
 year_published = game["yearpublished"].first["value"].to_i
 min_players = game["minplayers"].first["value"].to_i
