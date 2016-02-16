@@ -11,57 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216005812) do
+ActiveRecord::Schema.define(version: 20160215233916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "bgg_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "categories", ["name"], name: "index_categories_on_name", using: :btree
-
-  create_table "games", force: :cascade do |t|
-    t.string   "name",           null: false
-    t.integer  "min_players"
-    t.integer  "max_players"
-    t.string   "thumbnail_url"
-    t.text     "description",    null: false
-    t.integer  "year_published"
-    t.integer  "playing_time"
-    t.integer  "min_age"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "games", ["name"], name: "index_games_on_name", using: :btree
-
-  create_table "games_categories", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "category_id"
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string   "name",                                null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name",            null: false
+    t.string   "email",           null: false
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
