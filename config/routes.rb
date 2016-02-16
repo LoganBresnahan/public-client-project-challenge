@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :stashes, except: [:edit, :update, :show]
+    resources :friendships, only: [:new, :create, :destroy]
   end
 
   resources :sessions, only: [:create, :new, :destroy]
