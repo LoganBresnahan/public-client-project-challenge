@@ -1,10 +1,24 @@
 <h2>Welcome, <%= @user.name %>!</h2>
 
-<%= link_to "Edit Profile", [:edit, @user] %>
+<% if this %>
+  <%= link_to "Edit Profile", [:edit, @user] %>
+<% end %>
 
-<ul>
-  <% @user.games.each do |game| %>
-
-    <li><%= game.name %></li>
-  <% end %>
-</ul>
+<% if this || is_friend %>
+  <ul>
+    <h3>Friends:</h3>
+    <% @user.friends.each do |friend| %>
+      <% friendship = Friendship.where(user: current_user, friend: friend).first %>
+      <li><%= link_to("#{friend.name}", user_path(friend)) %><span><%=button_to "Unfriend", user_friendship_path(current_user, friendship), {method: :delete} %> </span></li>
+    <% end %>
+  </ul>
+  <hr>
+  <ul>
+    <h3>Games:</h3>
+    <% @user.games.each do |game| %>
+      <li><%=link_to("#{game.name}", game_path(game) )%></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <%= render partial: 'friendships/add_friend', locals: { user: @user} %>
+<% end %>
