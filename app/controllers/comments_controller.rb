@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
   def index
+    @comments = Game.find(params[:game_id]).comments
   end
 
   def create
-    p params
-    p "*********************"
     current_user = User.find(session[:user_id])
     game = Game.find(params[:game_id])
     @comment = current_user.comments.build(comment_params)
@@ -15,6 +14,12 @@ class CommentsController < ApplicationController
       flash[:alert] = "Comment did not save."
       redirect_to game_path(game)
     end
+  end
+
+  def destroy
+    game = Game.find(params[:game_id])
+    Comment.find(params[:id]).destroy
+    redirect_to game_path(game)
   end
 
   private

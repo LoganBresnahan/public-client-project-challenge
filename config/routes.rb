@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :new, :destroy]
 
   resources :games do
-    resources :comments, only: [:index, :create]
+    resources :comments, only: [:index, :create, :destroy]
   end
 
 
