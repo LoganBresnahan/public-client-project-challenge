@@ -1,0 +1,12 @@
+<div class="game-details">
+  <h3><%= @game.name %></h3>
+    <img class="game-image" src="<%= @game.thumbnail_url %>">
+    <h5><%= @game.min_players %> - <%= @game.max_players %> players</h5>
+    <h5>~<%= @game.playing_time %> minutes</h5>
+  <p><%= @game.description %></p>
+  <% if  %>
+    <p><strong>Year published:</strong> <%= @game.year_published %></p>
+    <p><strong>Ages:</strong> <%= @game.min_age %> and up</p>
+  <% end %>
+
+</div>
