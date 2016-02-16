@@ -4,9 +4,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'games#index'
-  resources :users
+
+  resources :users do
+    resources :stashes, except: [:edit, :update, :show]
+  end
+
   resources :sessions, only: [:create, :new, :destroy]
 
+  resources :games
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

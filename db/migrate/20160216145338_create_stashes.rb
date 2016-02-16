@@ -1,6 +1,6 @@
-class CreateCollections < ActiveRecord::Migration
+class CreateStashes < ActiveRecord::Migration
   def change
-    create_table :collections do |t|
+    create_table :stashes do |t|
       t.integer :user_id
       t.integer :game_id
 
