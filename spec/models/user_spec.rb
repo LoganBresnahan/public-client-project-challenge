@@ -13,7 +13,7 @@ RSpec.describe User, :type => :model do
   end
 
   it "has a password that is not null" do
-    expect(david.encrypted_password).to_not be_nil
+    expect(david.password).to_not be_nil
   end
 
   it "does not suck" do
