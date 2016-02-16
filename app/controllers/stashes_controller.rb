@@ -18,5 +18,8 @@ class StashesController < ApplicationController
   end
 
   def destroy
+    game = Game.find(params[:id])
+    Game.find(params[:id]).destroy
+    redirect_to games_path
   end
 end

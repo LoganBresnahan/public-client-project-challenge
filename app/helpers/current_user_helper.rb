@@ -4,4 +4,8 @@ module CurrentUserHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def has_game?(game)
+    current_user.games.include?(game) ? true : false
+  end
+
 end
