@@ -1,0 +1,49 @@
+nav {
+  list-style-type: none;
+}
+
+nav li {
+  display: inline;
+}
+
+nav h1  {
+  display: inline-block;
+}
+
+.jumbotron {
+  height: 500px;
+  width: 100%;
+  background-image: url('settlers_background.png');
+}
+
+#heading {
+  font-size: 8em;
+}
+
+#welcome-text {
+  color: white;
+  text-align: center;
+}
+
+#left-box {
+  height: 100px;
+  /*width: 50%;*/
+  background-color: yellow;
+  border-radius: 5px;
+}
+
+#right-box {
+  height: 100px;
+  /*width: 50%;*/
+  background-color: red;
+  border-radius: 5px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  position: fixed;
+}
+
+
