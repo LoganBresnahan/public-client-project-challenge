@@ -15,7 +15,7 @@ categories = []
 
 # Seeding the games (and making an array of categories)
 ids.each do |id|
-  sleep 10
+  sleep 11
   begin
     bgg = BggApi.new
     if !(bgg.thing({id: id.to_s})["item"] == nil)
