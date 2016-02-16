@@ -6,16 +6,23 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<header>
-  <%= render '/sessions/login_items' %>
-</header>
 
-<body class="container">
+<body>
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+      <h3>Meeple!</h3>
+        <%= render '/sessions/login_items' %>
+      </div>
+    </nav>
+  </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <%= yield %>
 
-<%= yield %>
-
+  <footer>
+    <p>&copy; Team JTron</p>
+  </footer>
 </body>
 </html>
