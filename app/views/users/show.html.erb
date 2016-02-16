@@ -8,14 +8,14 @@
   <ul>
     <h3>Friends:</h3>
     <% @user.friends.each do |friend| %>
-      <li><%=friend %></li>
+      <li><%= link_to("#{friend.name}", user_path(friend)) %></li>
     <% end %>
   </ul>
   <hr>
   <ul>
     <h3>Games:</h3>
     <% @user.games.each do |game| %>
-      <li><%= game.name %></li>
+      <li><%=link_to("#{game.name}", game_path(game) )%></li>
     <% end %>
   </ul>
   <% else %>
