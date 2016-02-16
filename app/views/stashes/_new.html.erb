@@ -1,4 +1,4 @@
-<%= form_for :stash, url: user_stashes_path(current_user) do |f|%>
+<%= form_for :thisdoesntmatter, url: user_stashes_path(current_user) do |f|%>
   <input type="hidden" name="game_id" value="<%= game.id %>">
-  <%= f.submit "Add" %>
+  <%= f.button "Add", class: "btn btn-primary" %>
 <% end %>
