@@ -2,12 +2,9 @@ language: ruby
 rvm:
   - 2.0.0
 env:
-  - DB=postgres
-  - TEST_SUITE=units
-  - TEST_SUITE=integration
+  - DB=postgresql
 script:
-  # - bundle exec rake spec
-  - bundle exec rake test:$TEST_SUITE
+  - bundle exec rake spec
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate
