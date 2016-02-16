@@ -3,6 +3,7 @@
 <table>
   <% @games.each do |game| %>
     <tr>
+      <td><img src="http:<%=game.thumbnail_url %>"></td>
       <td><%= link_to game.name, game_path(game) %></td>
       <% if current_user %>
         <% if has_game?(game) %>
