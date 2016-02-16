@@ -3,8 +3,13 @@ rvm:
   - 2.0.0
 env:
   - DB=postgresql
-script:
-  - bundle exec rake spec
+  - TESTFOLDER=integration/user
+  - TESTFOLDER=integration/session
+  - TESTFOLDER=integration/game
+  - TESTFOLDER=integration/category
+  - TESTFOLDER=units
+script: "bundle exec rspec $TESTFOLDER"
+  # - bundle exec rake spec
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate
