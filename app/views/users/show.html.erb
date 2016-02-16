@@ -1,3 +1,9 @@
 <h2>Welcome, <%= @user.name %>!</h2>
 
 <%= link_to "Edit Profile", [:edit, @user] %>
+
+<% @user.games.each do |game| %>
+<ul>
+  <li><%= game.name %></li>
+</ul>
+<% end %>
