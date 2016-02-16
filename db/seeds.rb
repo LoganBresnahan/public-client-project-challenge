@@ -6,9 +6,35 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Game.destroy_all
-GamesCategory.destroy_all
-Category.destroy_all
+require 'faker'
+
+User.destroy_all
+Group.destroy_all
+# Grouping.destroy_all
+# Friendship.destroy_all
+
+10.times do
+  User.create!(name: Faker::Hipster.words(2).join(" "), email:  Faker::Internet.email, password: "password")
+end
+
+hipster_words = []
+
+30.times do
+  hipster_words << Faker::Hipster.word
+end
+
+User.all.each do |user|
+  num = (1..5).to_a.sample
+  num.times do
+    user.groups << Group.create(name: hipster_words.sample)
+  end
+end
+
+
+
+# Game.destroy_all
+# GamesCategory.destroy_all
+# Category.destroy_all
 
 # ids = (1..200).to_a
 # categories = []
