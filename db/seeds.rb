@@ -10,49 +10,49 @@ Game.destroy_all
 GamesCategory.destroy_all
 Category.destroy_all
 
-ids = (1..200).to_a
-categories = []
+# ids = (1..200).to_a
+# categories = []
 
-# Seeding the games (and making an array of categories)
-ids.each do |id|
-  sleep 11
-  begin
-    bgg = BggApi.new
-    if !(bgg.thing({id: id.to_s})["item"] == nil)
-      p id
-      # p bgg.thing({id: id.to_s})
-      game = bgg.thing({id: id.to_s})["item"].first
-      game_hash = {
-        name: game["name"].first["value"],
-        thumbnail_url: game["thumbnail"].first,
-        min_players: game["minplayers"].first["value"].to_i,
-        max_players: game["maxplayers"].first["value"].to_i,
-        description: game["description"].first,
-        year_published: game["yearpublished"].first["value"].to_i,
-        playing_time: game["playingtime"].first["value"].to_i,
-        min_age: game["maxplayers"].first["value"].to_i
-      }
+# # Seeding the games (and making an array of categories)
+# ids.each do |id|
+#   sleep 10
+#   begin
+#     bgg = BggApi.new
+#     if !(bgg.thing({id: id.to_s})["item"] == nil)
+#       p id
+#       # p bgg.thing({id: id.to_s})
+#       game = bgg.thing({id: id.to_s})["item"].first
+#       game_hash = {
+#         name: game["name"].first["value"],
+#         thumbnail_url: game["thumbnail"].first,
+#         min_players: game["minplayers"].first["value"].to_i,
+#         max_players: game["maxplayers"].first["value"].to_i,
+#         description: game["description"].first,
+#         year_published: game["yearpublished"].first["value"].to_i,
+#         playing_time: game["playingtime"].first["value"].to_i,
+#         min_age: game["maxplayers"].first["value"].to_i
+#       }
 
-      saved_game = Game.create!(game_hash)
+#       saved_game = Game.create!(game_hash)
 
-      category_objects = game["link"].select do |info_hash|
-        info_hash["type"] == "boardgamecategory"
-      end
+#       category_objects = game["link"].select do |info_hash|
+#         info_hash["type"] == "boardgamecategory"
+#       end
 
-      category_objects.each do |hash|
-        category_hash = {
-          name: hash["value"],
-          bgg_id: hash["id"].to_i
-        }
-        category = Category.find_or_create_by!(category_hash)
-        saved_game.categories << category
-      end
-    end
-  rescue TypeError
-    p "fuck off"
-    next
-  end
-end
+#       category_objects.each do |hash|
+#         category_hash = {
+#           name: hash["value"],
+#           bgg_id: hash["id"].to_i
+#         }
+#         category = Category.find_or_create_by!(category_hash)
+#         saved_game.categories << category
+#       end
+#     end
+#   rescue TypeError
+#     p "fuck off"
+#     next
+#   end
+# end
 
 # [{"type"=>"boardgamecategory", "id"=>"1021", "value"=>"Economic"}, {"type"=>"boardgamecategory", "id"=>"1026", "value"=>"Negotiation"}, {"type"=>"boardgamecategory", "id"=>"1001", "value"=>"Political"}, {"type"=>"boardgamecategory", "id"=>"1002", "value"=>"Card Game"}, {"type"=>"boardgamecategory", "id"=>"1010", "value"=>"Fantasy"}, {"type"=>"boardgamecategory", "id"=>"1009", "value"=>"Abstract Strategy"}, {"type"=>"boardgamecategory", "id"=>"1035", "value"=>"Medieval"}]
 
