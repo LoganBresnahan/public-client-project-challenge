@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216005314) do
+ActiveRecord::Schema.define(version: 20160216005812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,11 @@ ActiveRecord::Schema.define(version: 20160216005314) do
   end
 
   add_index "games", ["name"], name: "index_games_on_name", using: :btree
+
+  create_table "games_categories", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                                null: false
