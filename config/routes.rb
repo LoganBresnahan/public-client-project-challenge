@@ -12,7 +12,10 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :new, :destroy]
 
-  resources :games
+  resources :games do
+    resources :comments, only: [:index, :create, :destroy]
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
