@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  # before_filter :check_friends, only: [:show]
+  # before_filter :check_self, only: [:update, :edit, :destroy]
+
   def index
   end
 

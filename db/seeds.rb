@@ -36,7 +36,7 @@ end
 # GamesCategory.destroy_all
 # Category.destroy_all
 
-# ids = (1..200).to_a
+# ids = (1..50).to_a
 # categories = []
 
 # # Seeding the games (and making an array of categories)
