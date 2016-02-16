@@ -43,6 +43,9 @@ GEM
       xml-simple
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.1)
+      sass (~> 3.2)
+    bower-rails (0.10.0)
     builder (3.2.2)
     byebug (8.2.2)
     coffee-rails (4.1.1)
@@ -177,6 +180,8 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bgg-api
+  bootstrap-sass (~> 3.2.0)
+  bower-rails (~> 0.10.0)
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
