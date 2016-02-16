@@ -1,10 +1,23 @@
 <h2>Welcome, <%= @user.name %>!</h2>
 
-<%= link_to "Edit Profile", [:edit, @user] %>
+<% if this %>
+  <%= link_to "Edit Profile", [:edit, @user] %>
+<% end %>
 
-<ul>
-  <% @user.games.each do |game| %>
-
-    <li><%= game.name %></li>
-  <% end %>
-</ul>
+<% if this || is_friend %>
+  <ul>
+    <h3>Friends:</h3>
+    <% @user.friends.each do |friend| %>
+      <li><%=friend %></li>
+    <% end %>
+  </ul>
+  <hr>
+  <ul>
+    <h3>Games:</h3>
+    <% @user.games.each do |game| %>
+      <li><%= game.name %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <%= render partial: 'friendships/add_friend', locals: { user: @user} %>
+<% end %>

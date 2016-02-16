@@ -12,4 +12,14 @@ module CurrentUserHelper
     Stash.where(user: current_user, game: game).first
   end
 
+  def is_friend
+    user = User.find(params[:id])
+    current_user
+    return current_user.friends.include?(user)
+  end
+
+  def this
+    current_user == User.find(params[:id])
+  end
+
 end
