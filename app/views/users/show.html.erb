@@ -8,7 +8,8 @@
   <ul>
     <h3>Friends:</h3>
     <% @user.friends.each do |friend| %>
-      <li><%= link_to("#{friend.name}", user_path(friend)) %></li>
+      <% friendship = Friendship.where(user: current_user, friend: friend).first %>
+      <li><%= link_to("#{friend.name}", user_path(friend)) %><span><%=button_to "Unfriend", user_friendship_path(current_user, friendship), {method: :delete} %> </span></li>
     <% end %>
   </ul>
   <hr>
