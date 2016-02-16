@@ -4,9 +4,13 @@
     <h5><%= @game.min_players %> - <%= @game.max_players %> players</h5>
     <h5>~<%= @game.playing_time %> minutes</h5>
   <p><%= @game.description %></p>
-  <% if  %>
+  <% if @game.year_published || @game.min_age %>
     <p><strong>Year published:</strong> <%= @game.year_published %></p>
     <p><strong>Ages:</strong> <%= @game.min_age %> and up</p>
   <% end %>
-
 </div>
+<section class="comments">
+  <% if current_user %>
+    <%= render partial: 'comments/new', locals: {game: @game} %>
+  <% end %>
+</section>
