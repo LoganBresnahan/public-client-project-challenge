@@ -1,3 +1,4 @@
 class Game < ActiveRecord::Base
-  # belongs_to :category
+  has_many :games_categories
+  has_many :categories, through: :games_categories
 end
