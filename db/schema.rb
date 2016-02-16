@@ -14,7 +14,23 @@
 ActiveRecord::Schema.define(version: 20160215233916) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  +  enable_extension "plpgsql"
+ +
+ +  create_table "games", force: :cascade do |t|
+ +    t.string   "name",           null: false
+ +    t.integer  "min_players"
+ +    t.integer  "max_players"
+ +    t.string   "thumbnail_url"
+ +    t.text     "description",    null: false
+ +    t.integer  "year_published"
+ +    t.integer  "playing_time"
+ +    t.integer  "min_age"
+ +    t.datetime "created_at",     null: false
+ +    t.datetime "updated_at",     null: false
+ +  end
+ +
+ +  add_index "games", ["name"], name: "index_games_on_name", using: :btree
+
 
   create_table "users", force: :cascade do |t|
     t.string   "name",            null: false
