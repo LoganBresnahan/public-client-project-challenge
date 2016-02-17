@@ -9,20 +9,21 @@
   <% end %>
 
   <% if this || is_friend %>
+    <h3 class="center-header">Friends:</h3>
     <ul>
-      <h3>Friends:</h3>
       <% @user.friends.each do |friend| %>
         <% friendship = Friendship.where(user: current_user, friend: friend).first %>
         <li><%= link_to("#{friend.name}", user_path(friend)) %><span><%=button_to "Unfriend", user_friendship_path(current_user, friendship), {method: :delete} %> </span></li>
       <% end %>
     </ul>
     <hr>
-    <ul>
-      <h3>Games:</h3>
+    <h3 class="center-header">Games:</h3>
+    <%= render partial: 'games/sort_panel' %>
+    <div id="game-container">
       <% @user.games.each do |game| %>
-        <li><%=link_to("#{game.name}", game_path(game) )%></li>
+        <%= render partial: 'games/game_card', locals: {game: game} %>
       <% end %>
-    </ul>
+    </div>
     <% else %>
       <%= render partial: 'friendships/add_friend', locals: { user: @user} %>
   <% end %>
