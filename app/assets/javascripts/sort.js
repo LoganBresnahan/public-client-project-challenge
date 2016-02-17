@@ -27,7 +27,9 @@ $(document).ready(function() {
       return $(b).find(".vote-score").text() - $(a).find(".vote-score").text()
     },
     "Most Commented": function(a, b) {
-      return $(b).find(".comment-count").text() - $(a).find(".comment-count").text()
+      if ($(b).find(".comment-count").text() < $(a).find(".comment-count").text()) return -1
+      if ($(a).find(".comment-count").text() < $(b).find(".comment-count").text()) return 1
+      return 0
     }
   }
 
