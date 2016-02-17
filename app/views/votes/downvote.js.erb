@@ -1,0 +1,2 @@
+var $gameCard = $("#game-container").find("#game-" + <%= @game.id %>)
+$gameCard.find('.vote-score').text("<%= @new_score %>")

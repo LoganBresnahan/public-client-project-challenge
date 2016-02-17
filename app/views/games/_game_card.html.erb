@@ -1,4 +1,4 @@
-<div class="game-card">
+<div class="game-card" id="game-<%= game.id %>">
   <h4><%= link_to game.name, game_path(game) %></h4>
   <div class="game-image">
     <img src="http:<%=game.thumbnail_url %>">
