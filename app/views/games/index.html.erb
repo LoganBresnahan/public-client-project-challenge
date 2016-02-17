@@ -1,19 +1,23 @@
-<h1>All Games!</h1>
+<h1 class="center-header">All Games!</h1>
 
-<table>
+<div id="game-container">
   <% @games.each do |game| %>
-    <tr>
-      <td><img src="http:<%=game.thumbnail_url %>"></td>
-      <td><%= link_to game.name, game_path(game) %></td>
-      <% if current_user %>
-        <% if has_game?(game) %>
-           <td><%= render partial: "stashes/destroy", locals: {game: game} %>
-          </td>
-        <% else %>
-          <td><%= render partial: "stashes/new", locals: {game: game} %></td>
+    <div class="game-card">
+      <h4><%= link_to game.name, game_path(game) %></h4>
+      <div class="game-image">
+        <img src="http:<%=game.thumbnail_url %>">
+      </div>
+      <div class="image-action">
+        <% if current_user %>
+          <% if has_game?(game) %>
+             <td><%= render partial: "stashes/destroy", locals: {game: game} %>
+            </td>
+          <% else %>
+            <td><%= render partial: "stashes/new", locals: {game: game} %></td>
+          <% end %>
         <% end %>
-      <% end %>
-    </tr>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>
 
