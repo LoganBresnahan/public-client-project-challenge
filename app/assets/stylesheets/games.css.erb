@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-#game-container {
+#game-container, #category-container {
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -10,7 +10,7 @@
   justify-content: space-around;
 }
 
-.game-card {
+.game-card, .category-card {
   width: 350px;
   flex: none;
   border: 1px solid grey;
@@ -19,7 +19,7 @@
   background-color: lightgrey;
 }
 
-.game-card:hover {
+.game-card:hover, .category-card:hover {
   opacity: 0.8;
 }
 
@@ -27,15 +27,16 @@
   text-align: center;
 }
 
-.game-image {
+.game-image, .category-image {
   max-width: 70%;
   min-height: 150px;
   margin: 0 auto;
 }
 
-.game-image img {
+.game-image img, .category-image img {
   display: block;
   margin: 0 auto;
+  margin-bottom: 10px
 }
 
 .image-action form {

@@ -1,7 +1,8 @@
 <h2 class="center-header">All Categories</h2>
 
-<ul>
-<% @categories.each do |cat| %>
-  <li><%= link_to cat.name, category_path(cat) %></li>
-<% end %>
-</ul>
+<div id="category-container">
+  <% @categories.each do |cat| %>
+    <%= render partial: 'categories/category_card', locals: {category: cat} %>
+  <% end %>
+  </ul>
+</div>
