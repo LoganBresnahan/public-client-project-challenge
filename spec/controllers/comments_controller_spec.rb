@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController do
-  let!(:test_comments) { Comment.create!([[content: "Cats"],[content: "Dogs", ], [content: "Jumbotrons"]]) }
+  let!(:test_comments) { Comment.create!([{content: "Cats"}, {content: "Dogs"}, {content: "Jumbotrons"}]) }
 
   describe "GET #index" do
     it "assigns all games to an instance variable" do

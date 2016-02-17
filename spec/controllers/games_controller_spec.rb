@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GamesController do
-  let!(:games) { Game.create!([[name: "Cats", description:"Lots of cats"],[name: "Dogs", description: "More dogs"], [name: "Jumbotrons", description: "MORE JUMBOTRON"]]) }
+  let!(:games) { Game.create!([{name: "Cats", description:"Lots of cats"},{name: "Dogs", description: "More dogs"}, {name: "Jumbotrons", description: "MORE JUMBOTRON"}]) }
 
   let!(:catan) { Game.create!(name: "Catan", description: "Classic strategy game") }
 
