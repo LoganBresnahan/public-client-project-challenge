@@ -3,7 +3,7 @@
     <img class="game-image" src="<%= @game.thumbnail_url %>">
     <h5><%= @game.min_players %> - <%= @game.max_players %> players</h5>
     <h5>~<%= @game.playing_time %> minutes</h5>
-  <p><%= @game.description %></p>
+  <p><%= @game.description.gsub(/(&#10;)/, "").gsub(/(&quot;)/, "").gsub(/(&egrave;te)/, "").gsub(/(&#195;)/, "").gsub(/(&#170;te)/, "") %></p>
   <% if @game.year_published || @game.min_age %>
     <p><strong>Year published:</strong> <%= @game.year_published %></p>
     <p><strong>Ages:</strong> <%= @game.min_age %> and up</p>
