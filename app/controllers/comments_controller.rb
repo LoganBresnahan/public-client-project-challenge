@@ -17,7 +17,10 @@ class CommentsController < ApplicationController
 
   def destroy
     game = Game.find(params[:game_id])
-    Comment.find(params[:id]).destroy
+    comment = Comment.find(params[:id])
+    if comment.commenter == current_user
+      comment.destroy
+    end
     redirect_to game_path(game)
   end
 
