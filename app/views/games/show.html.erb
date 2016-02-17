@@ -19,5 +19,5 @@
   <% if current_user %>
     <%= render partial: 'comments/new', locals: {game: @game} %>
   <% end %>
-  <%= render partial: 'comments/index', locals: {game: @game} %>
+  <%= render partial: 'comments/index', locals: {game: @game, comments: @game.comments} %>
 </section>

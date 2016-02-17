@@ -1,15 +1,13 @@
-<h3>Comments for <%= game.name %></h3>
+<h4>Comments for <%= game.name %>:</h4>
 <ul>
   <% @game.comments.each do |comment| %>
     <li>
       <p><%= comment.content %></p>
-      <p>Posted By: <%= comment.commenter.name %></p>
+      <p>by: <%= comment.commenter.name %></p>
     </li>
-    <%= form_for :comment, method: :delete, url: game_comment_path(@game, comment.id), confirm: "Are you sure?" do |f| %>
-    <input type='hidden' name='game_id' value="<%= @game.id %>">
 
-    <%= f.button "Delete", class: "btn btn-primary" %>
+    <% if current_user %>
+      <%= render partial: 'comments/destroy', locals: {comment: comment} %>
     <% end %>
   <% end %>
-
 </ul>
