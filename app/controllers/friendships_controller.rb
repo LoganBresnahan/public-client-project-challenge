@@ -3,9 +3,8 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    user = User.find_by(id: session[:user_id])
     friend = User.find(params[:user_id])
-    user.friends << friend
+    current_user.friends << friend
     redirect_to user_path(friend)
   end
 
