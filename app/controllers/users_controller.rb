@@ -7,9 +7,11 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     if user.save
+      flash[:welcome] = "(╯✧∇✧)╯ Welcome!"
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
+      flash[:error] = "User was not created. Try again."
       render 'new'
     end
   end
@@ -23,8 +25,11 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update_attributes(user_params)
-    redirect_to user_path(user)
+    if user.update_attributes(user_params)
+      redirect_to user_path(user)
+    else
+      flash[:error] = user.errors.full_messages.to_sentence
+    end
   end
 
   def edit

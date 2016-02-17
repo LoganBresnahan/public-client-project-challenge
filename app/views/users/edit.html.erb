@@ -1,5 +1,8 @@
+<% if flash[:error] %>
+  <marquee behavior="slide" direction="right"><%= flash[:error] %></marquee>
+<% end %>
 <h1>Edit Your Online Persona Here, Please. Thanks.</h1>
-<%= form_for :user, method: "patch", url: "/users/#{params[:id]}" do |f|  %>
+<%= form_for @user, method: "patch", url: @user do |f|  %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -15,6 +18,6 @@
   <p>
     <%= f.submit %>
   </p>
-
-  <h6><%= button_to 'delete', @user, method: :delete, data: { confirm: "Are you sure?" } %></h6>
 <% end %>
+
+<h6><%= button_to 'delete', @user, method: :delete, data: { confirm: "Are you sure?" } %></h6>

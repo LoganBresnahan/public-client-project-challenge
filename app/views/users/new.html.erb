@@ -1,5 +1,7 @@
 <% if flash[:success] %>
   <marquee behavior="slide" direction="right"><%= flash[:success] %></marquee>
+<% elsif flash[:error] %>
+  <marquee behavior="slide" direction="right"><%= flash[:error] %></marquee>
 <% end %>
 <div class="container">
   <h1>Register</h1>
