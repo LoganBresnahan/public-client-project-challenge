@@ -25,6 +25,9 @@ $(document).ready(function() {
     },
     "Highest Rated": function(a, b) {
       return $(b).find(".vote-score").text() - $(a).find(".vote-score").text()
+    },
+    "Most Commented": function(a, b) {
+      return $(b).find(".comment-count").text() - $(a).find(".comment-count").text()
     }
   }
 

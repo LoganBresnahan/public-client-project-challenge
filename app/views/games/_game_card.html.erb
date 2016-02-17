@@ -3,6 +3,7 @@
   <div class="game-image">
     <img src="http:<%=game.thumbnail_url %>">
   </div>
+  <p class="comment-count" style="display: none"><%= game.comments.count %></p>
   <div class="votes">
     <%= link_to raw('<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>'), upvote_game_path(game), method: "post", remote: true %>
     <span class="vote-score"><%= game.vote_score %></span>
