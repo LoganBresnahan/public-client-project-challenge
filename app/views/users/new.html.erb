@@ -1,3 +1,6 @@
+<% if flash[:success] %>
+  <marquee behavior="slide" direction="right"><%= flash[:success] %></marquee>
+<% end %>
 <div class="container">
   <h1>Register</h1>
     <%= form_for :user, url: users_path, class:"form-group" do |f|  %>
