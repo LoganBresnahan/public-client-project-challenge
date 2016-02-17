@@ -1,9 +1,9 @@
-<%= form_for :comment, url: game_comments_path(@game, @comment) do |f|  %>
+<%= form_for :comment, url: game_comments_path(@game, @comment), class:"form-group" do |f|  %>
   <p>
-    <%= f.label :comment %><br>
-    <%= f.text_area :content %>
+    <%= f.label "Add a comment" %><br>
+    <%= f.text_area :content, class:"form-control", rows:"3" %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit :Comment, class:"btn btn-primary" %>
   </p>
 <% end %>
