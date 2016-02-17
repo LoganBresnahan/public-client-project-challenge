@@ -1,21 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe CommentsController do
+RSpec.describe CommentsController, type: :controller do
   let!(:test_comments) { Comment.create!([{content: "Cats"}, {content: "Dogs"}]) }
 
   def comment_params
-    user = User.create!(name: "Liam Neeson", email: "tooken@2.com", password: "daughtername")
-    game = Game.create!(name:"Chess", description: "it's chess")
+    user = User.create!(name: Faker::Name.name, email: Faker::Internet.email, password: "password")
+    game = Game.create!(name: Faker::Hipster.word, description: Faker::Hipster.sentence)
 
-    return { content: "Jumbotrons", game_id: game.id, commenter_id: user.id }
+    return { content: Faker::Hipster.word, game_id: game.id, commenter_id: user.id }
   end
   let(:comment) { Comment.create!(comment_params) }
 
-  describe "GET #index" do
+  describe "GET comments#index" do
     # how to test get controller of nested route?
-    xit "assigns all comments to an instance variable" do
-      get :index
-      expect(assigns(:test_comments).first).to be_a(Comment)
+    xit "assigns @comments" do
+      get :index, :game_id => comment.game_id
+      expect(assigns(:comments).to eq([comment]))
+      # expect(assigns(:test_comments).first).to be_a(Comment)
     end
 
     xit "renders comment index partial" do
