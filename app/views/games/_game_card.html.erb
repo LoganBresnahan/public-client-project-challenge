@@ -1,0 +1,20 @@
+<div class="game-card">
+  <h4><%= link_to game.name, game_path(game) %></h4>
+  <div class="game-image">
+    <img src="http:<%=game.thumbnail_url %>">
+  </div>
+  <div class="votes">
+    <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+    <span class="vote-score"><%= game.vote_score %></span>
+    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+  </div>
+  <div class="image-action">
+    <% if current_user %>
+      <% if has_game?(game) %>
+        <%= render partial: "stashes/destroy", locals: {game: game} %>
+      <% else %>
+        <%= render partial: "stashes/new", locals: {game: game} %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
