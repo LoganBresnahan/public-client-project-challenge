@@ -12,8 +12,10 @@
     <h3 class="center-header">Friends:</h3>
     <ul>
       <% @user.friends.each do |friend| %>
-        <% friendship = Friendship.where(user: current_user, friend: friend).first %>
-        <li><%= link_to("#{friend.name}", user_path(friend)) %><span><%=button_to "Unfriend", user_friendship_path(current_user, friendship), {method: :delete} %> </span></li>
+        <% friendship = Friendship.where(user: @user, friend: friend).first %>
+        <li><%= link_to("#{friend.name}", user_path(friend)) %>
+          <span><%= button_to "Unfriend", user_friendship_path(@user, friendship), {method: :delete, class: "btn btn-danger"}  %> </span>
+        </li>
       <% end %>
     </ul>
     <hr>

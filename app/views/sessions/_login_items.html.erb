@@ -1,4 +1,4 @@
-<% if !session[:user_id] %>
+<% if !current_user %>
   <li class="nav-item">
     <%= link_to("Login", new_session_path, class: "nav-link") %>
   </li>
