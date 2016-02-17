@@ -14,11 +14,11 @@ class StashesController < ApplicationController
     else
       flash[:alert] = "Game already exists in your collection"
     end
-    redirect_to games_path
+    redirect_to :back
   end
 
   def destroy
     Stash.find(params[:id]).destroy
-    redirect_to games_path
+    redirect_to :back
   end
 end
