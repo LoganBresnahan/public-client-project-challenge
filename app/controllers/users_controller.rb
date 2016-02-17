@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(session[:user_id]).destroy
+    reset_session
     flash[:success] = "User terminated"
     redirect_to '/users/new'
   end
