@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    current_user = User.find(session[:user_id])
     game = Game.find(params[:game_id])
     @comment = current_user.comments.build(comment_params)
     @comment.game = game
