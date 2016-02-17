@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :games do
     resources :comments, only: [:index, :create, :destroy]
+    member do
+      post 'upvote' => 'votes#upvote'
+      post 'downvote' => 'votes#downvote'
+    end
   end
 
   resources :categories, only: [:index, :show]
