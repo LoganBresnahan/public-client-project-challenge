@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CategoriesController do
+RSpec.describe WelcomeController do
 
   describe "GET #index" do
     it "renders welcome index page" do
