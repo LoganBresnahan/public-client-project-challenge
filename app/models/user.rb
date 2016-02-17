@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   has_many :groups, foreign_key: :creator_id
   has_many :friends, through: :friendships, source: :friend
   has_many :comments, foreign_key: :commenter_id
+  has_many :votes
+  has_many :voted_on_games, through: :vote, source: :game
 
   has_secure_password
   validates :email, presence: true, uniqueness: true
