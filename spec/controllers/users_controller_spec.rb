@@ -13,7 +13,7 @@ RSpec.describe UsersController do
   describe "POST #create" do
     context  "when input is valid" do
       def valid_params
-        { name: "Kendrick Lamar", email:"topimp@butterf.ly", password:"wesley" }
+        { name: "George Clinton", email:"boss@pfunk.com", password:"password" }
       end
 
       it "creates a new User" do
@@ -24,7 +24,7 @@ RSpec.describe UsersController do
 
       it "redirects to user's profile" do
         post :create, { user: valid_params }
-         expect(response).to redirect_to(user_path(user.id))
+         expect(response).to redirect_to(user_path(User.last.id))
       end
     end
 

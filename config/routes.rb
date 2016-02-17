@@ -3,9 +3,20 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'games#index'
-  resources :users
+  root 'welcome#index'
+
+  resources :users do
+    resources :stashes, except: [:edit, :update, :show]
+    resources :friendships, only: [:new, :create, :destroy]
+  end
+
   resources :sessions, only: [:create, :new, :destroy]
+
+  resources :games do
+    resources :comments, only: [:index, :create, :destroy]
+  end
+
+  resources :categories, only: [:index, :show]
 
 
   # Example of regular route:

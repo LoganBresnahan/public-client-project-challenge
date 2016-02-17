@@ -1,0 +1,9 @@
+<%= form_for :comment, url: game_comments_path(@game, @comment) do |f|  %>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

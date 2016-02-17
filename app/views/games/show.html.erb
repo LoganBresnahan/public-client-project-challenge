@@ -1,0 +1,23 @@
+<div class="game-details">
+  <h3><%= @game.name %></h3>
+    <img class="game-image" src="<%= @game.thumbnail_url %>">
+    <h5><%= @game.min_players %> - <%= @game.max_players %> players</h5>
+    <h5>~<%= @game.playing_time %> minutes</h5>
+  <p><%= @game.description %></p>
+  <% if @game.year_published || @game.min_age %>
+    <p><strong>Year published:</strong> <%= @game.year_published %></p>
+    <p><strong>Ages:</strong> <%= @game.min_age %> and up</p>
+  <% end %>
+  <h3>Categories</h3>
+  <ul>
+    <% @game.categories.each do |cat| %>
+      <li><%= link_to cat.name, category_path(cat)%></li>
+    <% end %>
+  </ul>
+</div>
+<section class="comments">
+  <% if current_user %>
+    <%= render partial: 'comments/new', locals: {game: @game} %>
+  <% end %>
+  <%= render partial: 'comments/index', locals: {game: @game} %>
+</section>
