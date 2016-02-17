@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url
     else
+      flash[:login] = 'Try again... ԅ(≖‿≖ԅ)'
       render :new
     end
   end

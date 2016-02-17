@@ -1,3 +1,6 @@
+<% if flash[:login] %>
+  <marquee behavior="slide" direction="right"><%= flash[:login] %></marquee>
+<% end %>
 <div class="container">
   <h1>Login</h1>
     <%= form_for :session, url: sessions_path, class:"form-group" do |f| %>
