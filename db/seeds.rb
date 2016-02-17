@@ -12,6 +12,7 @@ User.destroy_all
 Friendship.destroy_all
 Comment.destroy_all
 Vote.destroy_all
+Stash.destroy_all
 
 User.create!(name: "Penelope", email: "penelope@penelope.com", password: "password")
 User.create!(name: "Kendrick Lamar", email: "topimp@butterf.ly", password: "maadcity")
@@ -22,32 +23,35 @@ end
 
 User.all.each do |user|
   user.friends << User.all.sample
+  3.times do
+    user.games << Game.all.sample
+  end
 end
 
-# bgg = BggApi.new
-# game = bgg.thing({:id => "128882"})["item"].first
-# game_hash = {
-#   name: game["name"].first["value"],
-#   thumbnail_url: game["thumbnail"].first,
-#   min_players: game["minplayers"].first["value"].to_i,
-#   max_players: game["maxplayers"].first["value"].to_i,
-#   description: game["description"].first,
-#   year_published: game["yearpublished"].first["value"].to_i,
-#   playing_time: game["playingtime"].first["value"].to_i,
-#   min_age: game["maxplayers"].first["value"].to_i
-# }
-# saved_game = Game.create!(game_hash)
-# category_objects = game["link"].select do |info_hash|
-#   info_hash["type"] == "boardgamecategory"
-# end
-# category_objects.each do |hash|
-#   category_hash = {
-#     name: hash["value"],
-#     bgg_id: hash["id"].to_i
-#   }
-#   category = Category.find_or_create_by!(category_hash)
-#   saved_game.categories << category
-# end
+bgg = BggApi.new
+game = bgg.thing({:id => "128882"})["item"].first
+game_hash = {
+  name: game["name"].first["value"],
+  thumbnail_url: game["thumbnail"].first,
+  min_players: game["minplayers"].first["value"].to_i,
+  max_players: game["maxplayers"].first["value"].to_i,
+  description: game["description"].first,
+  year_published: game["yearpublished"].first["value"].to_i,
+  playing_time: game["playingtime"].first["value"].to_i,
+  min_age: game["maxplayers"].first["value"].to_i
+}
+saved_game = Game.create!(game_hash)
+category_objects = game["link"].select do |info_hash|
+  info_hash["type"] == "boardgamecategory"
+end
+category_objects.each do |hash|
+  category_hash = {
+    name: hash["value"],
+    bgg_id: hash["id"].to_i
+  }
+  category = Category.find_or_create_by!(category_hash)
+  saved_game.categories << category
+end
 
 400.times do
   game = Game.all.sample
