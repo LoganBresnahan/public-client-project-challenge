@@ -1,7 +1,15 @@
 <% if !session[:user_id] %>
-  <li><%= link_to("Login", new_session_path ) %></li>
-  <li><%= link_to("Register", new_user_path ) %></li>
+  <li class="nav-item">
+    <%= link_to("Login", new_session_path, class: "nav-link") %>
+  </li>
+  <li class="nav-item">
+    <%= link_to("Register", new_user_path, class: "nav-link") %>
+  </li>
 <% else %>
-  <li><%= link_to("Welcome, #{current_user.name}", user_path(session[:user_id]))%></li>
-  <li><%=link_to("Logout", session_path(session[:user_id]), method: :delete ) %></li>
+  <li class="nav-item">
+    <%= link_to("Welcome, #{current_user.name}", user_path(session[:user_id]), class: "nav-link")%>
+  </li>
+  <li class="nav-item">
+    <%=link_to("Logout", session_path(session[:user_id]), method: :delete, class: "nav-link") %>
+  </li>
 <% end %>
