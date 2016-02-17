@@ -9,25 +9,17 @@
 require 'faker'
 
 User.destroy_all
-Group.destroy_all
-# Grouping.destroy_all
-# Friendship.destroy_all
+Friendship.destroy_all
 
-10.times do
-  User.create!(name: Faker::Hipster.words(2).join(" "), email:  Faker::Internet.email, password: "password")
-end
+User.create!(name: "Penelope", email: "penelope@penelope.com", password: "password")
+User.create!(name: "Kendrick Lamar", email: "topimp@butterf.ly", password: "maadcity")
 
-hipster_words = []
-
-30.times do
-  hipster_words << Faker::Hipster.word
+20.times do
+  User.create!(name: Faker::Name.name, email:  Faker::Internet.email, password: "password")
 end
 
 User.all.each do |user|
-  num = (1..5).to_a.sample
-  num.times do
-    user.groups << Group.create(name: hipster_words.sample)
-  end
+  user.friends << User.all.sample
 end
 
 
