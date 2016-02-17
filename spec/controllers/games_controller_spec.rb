@@ -8,22 +8,23 @@ RSpec.describe GamesController do
   describe "GET #index" do
     it "assigns all games to an instance variable" do
       get :index
-      expect(assigns(:games)).to eq(games)
+      expect(assigns(:games).first).to be_a(Game)
     end
 
     it "renders game index page" do
       get :index
       expect(response).to render_template(:index)
     end
+  end
 
-    describe "GET #show" do
+  describe "GET #show" do
     it "assigns game to an instance variable" do
-      get :index
+      get :show, { id: catan.id }
       expect(assigns(:game)).to eq(catan)
     end
 
     it "renders game index page" do
-      get :show
+      get :show, { id: catan.id }
       expect(response).to render_template(:show)
     end
   end
