@@ -8,6 +8,12 @@
     <p><strong>Year published:</strong> <%= @game.year_published %></p>
     <p><strong>Ages:</strong> <%= @game.min_age %> and up</p>
   <% end %>
+  <h3>Categories</h3>
+  <ul>
+    <% @game.categories.each do |cat| %>
+      <li><%= link_to cat.name, game_category_path(cat, cat.id)%></li>
+    <% end %>
+  </ul>
 </div>
 <section class="comments">
   <% if current_user %>

@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :games do
     resources :comments, only: [:index, :create, :destroy]
+    resources :categories, only: [:index, :show]
   end
+
 
 
   # Example of regular route:
