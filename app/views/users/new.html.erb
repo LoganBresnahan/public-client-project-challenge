@@ -1,19 +1,20 @@
-<h1>Register</h1>
-
-<%= form_for :user, url: users_path do |f|  %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="container">
+  <h1>Register</h1>
+    <%= form_for :user, url: users_path, class:"form-group" do |f|  %>
+      <p>
+        <%= f.label :name, class:"form-group" %><br>
+        <%= f.text_field :name, class:"form-group" %>
+      </p>
+      <p>
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class:"form-group" %>
+      </p>
+      <p>
+        <%= f.label :password %><br>
+        <%= f.password_field :password, class:"form-group" %>
+      </p>
+      <p>
+        <%= f.submit :Register, class:"btn btn-primary" %>
+      </p>
+    <% end %>
+</div>

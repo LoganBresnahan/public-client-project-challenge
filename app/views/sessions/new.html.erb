@@ -1,15 +1,16 @@
-<h1>Login</h1>
-
-<%= form_for :session, url: sessions_path do |f| %>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.submit %><br>
-  </p>
-<% end %>
+<div class="container">
+  <h1>Login</h1>
+    <%= form_for :session, url: sessions_path, class:"form-group" do |f| %>
+      <p>
+        <%= f.label :email %><br>
+        <%= f.email_field :email, class:"form-group" %>
+      </p>
+      <p>
+        <%= f.label :password %><br>
+        <%= f.password_field :password, class:"form-group" %>
+      </p>
+      <p>
+        <%= f.submit :Login, class:"btn btn-primary" %><br>
+      </p>
+    <% end %>
+</div>
