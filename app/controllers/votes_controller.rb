@@ -4,7 +4,6 @@ class VotesController < ApplicationController
 
   # Not DRY, needs refactoring
   def upvote
-    current_user = User.find(session[:user_id]) if session[:user_id]
     @game = Game.find_by(id: params[:id])
     vote = current_user.votes.new(game: @game, value: 1)
     if vote.save
@@ -20,7 +19,6 @@ class VotesController < ApplicationController
   end
 
   def downvote
-    current_user = User.find(session[:user_id]) if session[:user_id]
     @game = Game.find_by(id: params[:id])
     vote = current_user.votes.new(game: @game, value: -1)
     if vote.save
