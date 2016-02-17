@@ -1,23 +1,25 @@
 <% if flash[:error] %>
   <marquee behavior="slide" direction="right"><%= flash[:error] %></marquee>
 <% end %>
-<h1>Edit Your Online Persona Here, Please. Thanks.</h1>
-<%= form_for @user, method: "patch", url: @user do |f|  %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="container">
+  <h1>Edit your profile</h1>
+  <%= form_for @user, method: "patch", url: @user do |f|  %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email %><br>
+      <%= f.email_field :email %>
+    </p>
+    <p>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.submit :Update, class: "btn btn-primary" %>
+    </p>
+  <% end %>
 
-<h6><%= button_to 'delete', @user, method: :delete, data: { confirm: "Are you sure?" } %></h6>
+  <h6><%= button_to 'Delete', @user, method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?" } %></h6>
+</div>
