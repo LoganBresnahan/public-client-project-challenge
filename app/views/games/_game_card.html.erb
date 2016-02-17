@@ -1,12 +1,12 @@
-<div class="game-card">
+<div class="game-card" id="game-<%= game.id %>">
   <h4><%= link_to game.name, game_path(game) %></h4>
   <div class="game-image">
     <img src="http:<%=game.thumbnail_url %>">
   </div>
   <div class="votes">
-    <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+    <%= link_to raw('<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>'), upvote_game_path(game), method: "post", remote: true %>
     <span class="vote-score"><%= game.vote_score %></span>
-    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+    <%= link_to raw('<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>'), downvote_game_path(game), method: "post", remote: true %>
   </div>
   <div class="image-action">
     <% if current_user %>
