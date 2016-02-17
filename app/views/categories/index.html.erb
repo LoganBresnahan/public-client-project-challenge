@@ -1,5 +1,15 @@
 <h2 class="center-header">All Categories</h2>
 
+<div class="sort-panel">
+  <span>Sort by: </span>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">A-Z</button>
+    <button type="button" class="btn btn-default">Z-A</button>
+    <button type="button" class="btn btn-default">Most Games</button>
+    <button type="button" class="btn btn-default">Fewest Games</button>
+  </div>
+</div>
+
 <div id="category-container">
   <% @categories.each do |cat| %>
     <%= render partial: 'categories/category_card', locals: {category: cat} %>
