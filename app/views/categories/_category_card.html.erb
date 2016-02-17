@@ -1,0 +1,7 @@
+<div class="category-card" id="category-<%= category.id %>">
+  <h4 class="center-header"><%= link_to category.name, category_path(category) %></h4>
+  <div class="category-image">
+    <img src="http:<%=category.games.sample.thumbnail_url %>">
+  </div>
+  <p class="center-header">Games: <span class="games-count"><%= category.games.count %></span></p>
+</div>
