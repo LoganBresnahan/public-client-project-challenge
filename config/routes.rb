@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :create, :destroy]
   end
 
+  resources :categories, only: [:index, :show]
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
