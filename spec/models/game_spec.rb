@@ -34,4 +34,12 @@ RSpec.describe Game, type: :model do
   it "has a minimum age" do
     expect(catan.min_age).to eq 10
   end
+
+  describe Game do
+    it { should have_many(:games_categories) }
+    it { should have_many(:categories).through(:games_categories) }
+    it { should have_many(:stashes) }
+    it { should have_many(:users).through(:stashes) }
+    it { should have_many(:comments) }
+  end
 end
